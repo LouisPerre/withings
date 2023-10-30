@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import Question from './Question';
 import axios from 'axios';
+import StartGame from './StartGame';
 
 const App = () => {
 	const [questions, setQuestions] = useState([]);
@@ -37,39 +38,42 @@ const App = () => {
 	}, [])
 
 	return(
-		<div className="App">
-			{ isLoading ? (
-				<p>Loading ...</p>
-			) : index !== questions.length ? (
-				<>
-					<div className="App-header">
-						<h1>Quiz - Question { index + 1}/5</h1>
-					</div>
+		// <div className="App">
+		// 	{ isLoading ? (
+		// 		<p>Loading ...</p>
+		// 	) : index !== questions.length ? (
+		// 		<>
+		// 			<div className="App-header">
+		// 				<h1>Quiz - Question { index + 1}/5</h1>
+		// 			</div>
 
-					<div className="App-content">
-						<Question 
-							question={currentQuestion}
-							nextQuestion={nextQuestion}
-						/>
-					</div>
-				</>
-			) : (
-				<>
-					<div className="App-header">
-						<h1>Quiz - End</h1>
-					</div>
+		// 			<div className="App-content">
+		// 				<Question 
+		// 					question={currentQuestion}
+		// 					nextQuestion={nextQuestion}
+		// 				/>
+		// 			</div>
+		// 		</>
+		// 	) : (
+		// 		<>
+		// 			<div className="App-header">
+		// 				<h1>Quiz - End</h1>
+		// 			</div>
 
-					<div className="App-content">
-						<div className="finish-screen">
-							<p className="label">Your score / Maximum score</p>
-							<p className="score">{score} / {maxScore}</p>
-							<div className="btn-retry" onClick={() => window.location.reload()}>Retry quiz?</div>
-						</div>
-					</div>
-				</>
-			)}
+		// 			<div className="App-content">
+		// 				<div className="finish-screen">
+		// 					<p className="label">Your score / Maximum score</p>
+		// 					<p className="score">{score} / {maxScore}</p>
+		// 					<div className="btn-retry" onClick={() => window.location.reload()}>Retry quiz?</div>
+		// 				</div>
+		// 			</div>
+		// 		</>
+		// 	)}
 			
-		</div> 
+		// </div> 
+		<div className="App">
+			<StartGame />
+		</div>
 	);
 }
 

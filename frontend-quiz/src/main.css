@@ -1,4 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
@@ -70,10 +73,11 @@ body {
 
 .App {
 	margin-top: 20px;
-	width: 80%;
+	width:100%;
 	background-color: rgba(255,255,255, 0.96);
 	border-radius: 10px;
 	padding: 20px;
+	min-width: 700px;
 }
 
 .App-header h1 {
