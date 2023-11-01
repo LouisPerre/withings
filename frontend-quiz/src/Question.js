@@ -9,6 +9,16 @@ const Question = (props) => {
 	const [activeDiv, setActiveDiv] = useState(null)
 	const [correctSelect, setCorrectSelect] = useState(null)
 
+	const shuffleArray = (array) => {
+		const shuffledArray = [...array];
+		for (let i = shuffledArray.length - 1; i > 0; i--) {
+			const j = Math.floor(Math.random() * (i + 1));
+			[shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]]
+		}
+
+		return shuffledArray
+	}
+
 	const handleClick = (event) => {
 		// TODO check answer selected and call next question
 		// TODO highlight good answer
@@ -42,8 +52,10 @@ const Question = (props) => {
 	}
 
 	useEffect(() => {
-		setAnswers([]);
-		setAnswers([...props.question.incorrectAnswers, props.question.correctAnswer]);
+		setCorrectSelect(null)
+		const shuffledAnswers = shuffleArray([...props.question.incorrectAnswers, props.question.correctAnswer])
+		// setAnswers([]);
+		setAnswers(shuffledAnswers);
 		if (props.question.difficulty === 'easy' || props.question.difficulty === 'medium') {
 			setScoreQuestion(1)
 			setMaxScore((prevMaxScore) => prevMaxScore + 1)
@@ -60,7 +72,7 @@ const Question = (props) => {
 	return (
 		<div className="question-container">
 			<div className="question-category">{props.question.category} - {scoreQuestion}</div>
-			<div className='question-title'>{props.question.question}</div>
+			<div className='question-title'>{props.question.question.text}</div>
 			<div className="question-answers">
 				{
 					answers.map((answer, index) => (

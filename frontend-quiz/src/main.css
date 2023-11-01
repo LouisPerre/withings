@@ -86,6 +86,18 @@ body {
 	margin-bottom: 3px;
 }
 
+.App-header {
+	display: flex;
+	gap: 2rem;
+	align-items: center;
+}
+
+.App-header p {
+	font-size: 25px;
+	font-weight: 400;
+	margin-bottom: 3px;
+}
+
 .App-content {
 	margin: 20px 0;
 	text-align: center;
@@ -96,10 +108,33 @@ body {
 	font-size: 12px;
 }
 
+.loading-question-container {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+}
+
+.loading-question-category {
+	max-width: 20ch;
+	max-height: 12px;
+	width: 100%;
+	border-radius: 8px;
+	/* margin-bottom: 10px; */
+}
+
 .question-title {
 	font-size: 20px;
 	font-weight: bold;
 	margin: 5px 0 30px;
+}
+
+.loading-question-title {
+	width: 100%;
+	max-width: 65ch;
+	max-height: 20px;
+	margin: 5px 0 30px;
+	border-radius: 8px;
 }
 
 .question-answers {
@@ -110,6 +145,15 @@ body {
 	margin-bottom: 40px;
 }
 
+.loading-question-answers {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0px 20px;
+	margin-bottom: 40px;
+	gap: 2rem;
+}
+
 .answer {
 	display: block;
 	padding: 10px 15px;
@@ -118,6 +162,16 @@ body {
 	border-radius: 8px;
 	transition: all 250ms ease-out;
 	cursor: pointer;
+}
+
+.loading-answer {
+	display: block;
+	border-radius: 8px;
+	max-width: 20ch;
+	max-height: 26px;
+	height: 100%;
+	width: 100%;
+	padding: 10px 15px;
 }
 
 .answer.selected {
@@ -136,12 +190,23 @@ body {
 	cursor: pointer;
 }
 
+.loading-question-submit {
+	font-size: 15px;
+	text-transform: uppercase;
+	padding: 15px 20px;
+	color: white;
+	border-radius: 8px;
+	transition: all 250ms ease-out;
+	cursor: pointer;
+	width: 100%;
+}
+
 .question-submit.disabled {
 	background-color: #ccc;
 	color: rgb(87, 86, 86);
 }
 
-.correct {
+.answer.correct {
 	background-color: rgb(34, 157, 73);
 	color: white;
 	border: 1px solid rgb(34, 157, 73);
@@ -174,4 +239,21 @@ body {
 	border-radius: 8px;
 	transition: all 250ms ease-out;
 	cursor: pointer;
+}
+
+.container {
+	position: relative;
+	overflow: hidden;
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.fuzzyOverlay {
+	pointer-events: none;
+	position: absolute;
+	inset: -100%;
+	opacity: 15%;
 }
